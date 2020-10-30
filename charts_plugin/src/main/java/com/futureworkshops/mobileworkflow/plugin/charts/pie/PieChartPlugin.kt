@@ -10,7 +10,7 @@ import com.futureworkshops.mobileworkflow.plugin.charts.pie.view.UIPieChartPlugi
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.steps.Step
 
-class PieChartPlugin : DeserializeStep<PieChartPluginStep>(
+internal class PieChartPlugin : DeserializeStep<PieChartPluginStep>(
     type = "chartsPieChart",
     classT = PieChartPluginStep::class.java
 ) {

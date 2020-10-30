@@ -20,7 +20,7 @@ allprojects {
         maven { url = uri("https://jitpack.io") }
         maven {
             name = "Mobile Workflow"
-            url = uri("https://raw.githubusercontent.com/FutureWorkshops/MobileWorkflowCore-Android-Distribution/test")
+            url = uri("https://raw.githubusercontent.com/FutureWorkshops/MobileWorkflowCore-Android-Distribution/main")
             credentials(HttpHeaderCredentials::class) {
                 val properties = java.util.Properties()
                 properties.load(project.rootProject.file("local.properties").inputStream())
