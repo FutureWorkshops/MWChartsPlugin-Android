@@ -13,6 +13,7 @@ import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.mattyork.colours.Colour
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -41,25 +42,30 @@ internal class PieChartPluginView(
             PieEntry(item.value, item.label)
         }
 
-        val pieDataSet = PieDataSet(map, "")
-        pieDataSet.setColors(
-            intArrayOf(
-                R.color.chart_color_1,
-                R.color.chart_color_2,
-                R.color.chart_color_3,
-                R.color.chart_color_4,
-                R.color.chart_color_5
-            ), context
-        )
-        pieDataSet.valueTextColor = Color.BLACK
-        val pieData = PieData(pieDataSet)
-        val pieChart = pieChartPluginPart.view.findViewById<PieChart>(R.id.pieChart)
-        pieChart.data = pieData
-        pieChart.setEntryLabelColor(Color.BLACK)
-        pieChart.description = Description().apply {
-            text = context.getString(R.string.quantities)
+        val pieDataSet = PieDataSet(map, "").apply {
+            // TODO: Replace Color.RED for tintColor
+            val complementaryColors: IntArray =
+                Colour.colorSchemeOfType(Color.RED, Colour.ColorScheme.ColorSchemeComplementary)
+            colors = complementaryColors.toMutableList()
+
+            valueTextColor = Color.WHITE
+            valueTextSize = context.resources.getDimension(R.dimen.small_text)
         }
-        pieChart.invalidate()
+
+        val pieData = PieData(pieDataSet)
+
+        pieChartPluginPart.view.findViewById<PieChart>(R.id.pieChart).apply {
+            data = pieData
+            setEntryLabelColor(Color.WHITE)
+            setEntryLabelTextSize(context.resources.getDimension(R.dimen.small_text))
+            description = Description().apply {
+                text = null
+            }
+            isDrawHoleEnabled = false
+            legend.isEnabled = false
+            isRotationEnabled = false
+            invalidate()
+        }
     }
 
 }

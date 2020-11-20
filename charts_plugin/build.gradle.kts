@@ -90,4 +90,5 @@ dependencies {
 
     implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.4")
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
+    implementation("com.github.matthewyork:ColoursLibrary:1.0.+@aar")
 }
