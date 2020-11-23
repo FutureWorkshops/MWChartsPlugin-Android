@@ -44,9 +44,8 @@ internal class PieChartPluginView(
         }
 
         val pieDataSet = PieDataSet(map, "").apply {
-            // TODO: Replace Color.RED for tintColor
             val complementaryColors: IntArray =
-                Colour.colorSchemeOfType(Color.RED, Colour.ColorScheme.ColorSchemeComplementary)
+                Colour.colorSchemeOfType(pieChartPluginPart.tintColor, Colour.ColorScheme.ColorSchemeComplementary)
             colors = complementaryColors.toMutableList()
 
             valueTextColor = Color.WHITE

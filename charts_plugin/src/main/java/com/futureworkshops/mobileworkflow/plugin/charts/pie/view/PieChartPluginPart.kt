@@ -19,8 +19,10 @@ internal class PieChartPluginPart @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleRes), StyleablePart {
 
     val view: View = View.inflate(context, R.layout.pie_chart_plugin_step, this)
+    var tintColor: Int = 0
 
     override fun style(surveyTheme: SurveyTheme) {
+        tintColor = surveyTheme.themeColor
     }
 
 }
