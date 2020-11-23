@@ -14,15 +14,15 @@ import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 internal class PieChartPluginPart @JvmOverloads constructor(
     context: Context,
+    private val styleListener: StyleListener,
     attrs: AttributeSet? = null,
     defStyleRes: Int = 0
 ) : FrameLayout(context, attrs, defStyleRes), StyleablePart {
 
     val view: View = View.inflate(context, R.layout.pie_chart_plugin_step, this)
-    var tintColor: Int = 0
 
     override fun style(surveyTheme: SurveyTheme) {
-        tintColor = surveyTheme.themeColor
+        styleListener.onTintColorReady(surveyTheme.themeColor)
     }
 
 }

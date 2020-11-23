@@ -2,7 +2,7 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
 buildscript {
-    val kotlin_version = "1.4.10"
+    val kotlin_version by extra("1.4.10")
     repositories {
         google()
         jcenter()

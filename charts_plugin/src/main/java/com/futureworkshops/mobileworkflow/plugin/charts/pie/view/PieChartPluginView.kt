@@ -26,7 +26,8 @@ internal class PieChartPluginView(
     isOptional: Boolean,
     title: String,
     val items: List<PieChartItem>
-) : QuestionView(context, id, isOptional, title, null, DictionaryHelper.getTranslation("Next")) {
+) : QuestionView(context, id, isOptional, title, null, DictionaryHelper.getTranslation("Next")),
+    StyleListener {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
 
@@ -36,20 +37,22 @@ internal class PieChartPluginView(
 
     override fun setupViews() {
         super.setupViews()
-        pieChartPluginPart = PieChartPluginPart(context)
+        pieChartPluginPart = PieChartPluginPart(context, this)
         content.add(pieChartPluginPart)
+    }
 
+    override fun onTintColorReady(color: Int) {
         val map = items.map { item ->
             PieEntry(item.value, item.label)
         }
 
         val pieDataSet = PieDataSet(map, "").apply {
             val complementaryColors: IntArray =
-                Colour.colorSchemeOfType(pieChartPluginPart.tintColor, Colour.ColorScheme.ColorSchemeComplementary)
+                Colour.colorSchemeOfType(color, Colour.ColorScheme.ColorSchemeComplementary)
             colors = complementaryColors.toMutableList()
 
             valueTextColor = Color.WHITE
-            valueTextSize = context.resources.getDimension(R.dimen.small_text)
+            valueTextSize = 12f
         }
 
         val pieData = PieData(pieDataSet)
@@ -57,9 +60,9 @@ internal class PieChartPluginView(
         pieChartPluginPart.view.findViewById<PieChart>(R.id.pieChart).apply {
             data = pieData
             setEntryLabelColor(Color.WHITE)
-            setEntryLabelTextSize(context.resources.getDimension(R.dimen.small_text))
+            setEntryLabelTextSize(12f)
             description = Description().apply {
-                text = null
+                text = ""
             }
             isDrawHoleEnabled = false
             legend.isEnabled = false
@@ -67,5 +70,11 @@ internal class PieChartPluginView(
             invalidate()
         }
     }
+
+}
+
+internal interface StyleListener {
+
+    fun onTintColorReady(color: Int)
 
 }
