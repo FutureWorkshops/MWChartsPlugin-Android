@@ -1,0 +1,139 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.futureworkshops.mobileworkflow.plugin",
+    "module": "charts",
+    "version": "0.0.3",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.5",
+      "buildId": "t4bkdf2lq5ejpauwzieek455ta"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.4.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "charts-0.0.3.aar",
+          "url": "charts-0.0.3.aar",
+          "size": 56726,
+          "sha512": "1c9b81ead88989800b9a28bc1ee0e1c52c7bce899e9b97da748a21a3775591a3ef5118eae29c7b70961f6e741bc562d6eecdd0ea9f5b2c72d07e820dfd57ed43",
+          "sha256": "6d5512f5306f41ecc965fa055c9a8c950a2c18f745ccf6610dae0153c6120f82",
+          "sha1": "3997c27f0dadf090992d60351ac1c7933dee9734",
+          "md5": "c702a12d95cdc1a0ceeb273e9d780afe"
+        }
+      ]
+    },
+    {
+      "name": "releaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.4.10"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-android-extensions-runtime",
+          "version": {
+            "requires": "1.4.10"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.3.2"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "com.google.android.material",
+          "module": "material",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "com.futureworkshops.mobileworkflow",
+          "module": "mw-core",
+          "version": {
+            "requires": "0.0.8"
+          }
+        },
+        {
+          "group": "com.github.PhilJay",
+          "module": "MPAndroidChart",
+          "version": {
+            "requires": "3.1.0"
+          }
+        },
+        {
+          "group": "com.github.matthewyork",
+          "module": "ColoursLibrary",
+          "version": {
+            "requires": "1.0.+"
+          },
+          "excludes": [
+            {
+              "group": "*",
+              "module": "*"
+            }
+          ],
+          "thirdPartyCompatibility": {
+            "artifactSelector": {
+              "name": "ColoursLibrary",
+              "type": "aar",
+              "extension": "aar"
+            }
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "charts-0.0.3.aar",
+          "url": "charts-0.0.3.aar",
+          "size": 56726,
+          "sha512": "1c9b81ead88989800b9a28bc1ee0e1c52c7bce899e9b97da748a21a3775591a3ef5118eae29c7b70961f6e741bc562d6eecdd0ea9f5b2c72d07e820dfd57ed43",
+          "sha256": "6d5512f5306f41ecc965fa055c9a8c950a2c18f745ccf6610dae0153c6120f82",
+          "sha1": "3997c27f0dadf090992d60351ac1c7933dee9734",
+          "md5": "c702a12d95cdc1a0ceeb273e9d780afe"
+        }
+      ]
+    }
+  ]
+}

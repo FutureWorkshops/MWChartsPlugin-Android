@@ -15,7 +15,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.mattyork.colours.Colour
 import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.backend.helpers.DictionaryHelper
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.EmptyQuestionResult
@@ -25,8 +24,9 @@ internal class PieChartPluginView(
     id: StepIdentifier,
     isOptional: Boolean,
     title: String,
+    nextButton: String,
     val items: List<PieChartItem>
-) : QuestionView(context, id, isOptional, title, null, DictionaryHelper.getTranslation("Next")),
+) : QuestionView(context, id, isOptional, title, null, nextButton),
     StyleListener {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
