@@ -7,8 +7,8 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie
 import com.futureworkshops.mobileworkflow.domain.DeserializeStep
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartPluginStep
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.view.UIPieChartPluginStep
-import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.steps.Step
+import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
+import com.futureworkshops.mobileworkflow.surveykit.steps.Step
 
 internal class PieChartPlugin : DeserializeStep<PieChartPluginStep>(
     type = "chartsPieChart",

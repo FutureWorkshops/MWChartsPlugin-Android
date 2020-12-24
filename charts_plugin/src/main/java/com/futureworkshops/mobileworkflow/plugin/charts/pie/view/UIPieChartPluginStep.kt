@@ -4,13 +4,13 @@
 
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
-import android.content.Context
+import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.backend.views.step.StepView
-import com.quickbirdstudios.surveykit.result.StepResult
-import com.quickbirdstudios.surveykit.services.MobileWorkflowServices
-import com.quickbirdstudios.surveykit.steps.Step
+import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
+import com.futureworkshops.mobileworkflow.surveykit.backend.views.step.StepView
+import com.futureworkshops.mobileworkflow.surveykit.result.StepResult
+import com.futureworkshops.mobileworkflow.surveykit.services.MobileWorkflowServices
+import com.futureworkshops.mobileworkflow.surveykit.steps.Step
 
 internal class UIPieChartPluginStep(
     private val title: String,
@@ -20,11 +20,15 @@ internal class UIPieChartPluginStep(
     val items: List<PieChartItem>
 ) : Step {
 
-    override fun createView(context: Context, stepResult: StepResult?, mobileWorkflowServices: MobileWorkflowServices): StepView {
+    override fun createView(
+        stepResult: StepResult?,
+        mobileWorkflowServices: MobileWorkflowServices,
+        workflowServiceResponse: WorkflowServiceResponse,
+        selectedWorkflowId: Int
+    ): StepView {
         items.forEach { mobileWorkflowServices.localizationService.getTranslation(it.label) }
 
         return PieChartPluginView(
-            context = context,
             id = id,
             isOptional = isOptional,
             title = mobileWorkflowServices.localizationService.getTranslation(title),

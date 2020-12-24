@@ -88,7 +88,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
-    implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.8")
+    implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.14")
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
     implementation("com.github.matthewyork:ColoursLibrary:1.0.+@aar")
 }

@@ -4,29 +4,27 @@
 
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
-import android.content.Context
 import android.graphics.Color
 import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
+import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
+import com.futureworkshops.mobileworkflow.surveykit.backend.views.step.QuestionView
+import com.futureworkshops.mobileworkflow.surveykit.result.QuestionResult
+import com.futureworkshops.mobileworkflow.surveykit.result.question_results.EmptyQuestionResult
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.mattyork.colours.Colour
-import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
-import com.quickbirdstudios.surveykit.result.QuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.EmptyQuestionResult
 
 internal class PieChartPluginView(
-    context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
     title: String,
     nextButton: String,
     val items: List<PieChartItem>
-) : QuestionView(context, id, isOptional, title, null, nextButton),
+) : QuestionView(id, isOptional, title, null, nextButton),
     StyleListener {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
@@ -37,8 +35,10 @@ internal class PieChartPluginView(
 
     override fun setupViews() {
         super.setupViews()
-        pieChartPluginPart = PieChartPluginPart(context, this)
-        content.add(pieChartPluginPart)
+        context?.let { safeContext ->
+            pieChartPluginPart = PieChartPluginPart(safeContext, this)
+            content.add(pieChartPluginPart)
+        }
     }
 
     override fun onTintColorReady(color: Int) {
