@@ -1,2 +1,4 @@
 include ':charts_plugin'
+include ':app'
+
 rootProject.name = "Charts Plugin"

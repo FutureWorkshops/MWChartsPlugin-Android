@@ -23,7 +23,7 @@ internal class PieChartPluginView(
     isOptional: Boolean,
     title: String,
     nextButton: String,
-    val items: List<PieChartItem>
+    val itemsProvider: ItemsProvider
 ) : QuestionView(id, isOptional, title, null, nextButton),
     StyleListener {
 
@@ -42,6 +42,10 @@ internal class PieChartPluginView(
     }
 
     override fun onTintColorReady(color: Int) {
+        itemsProvider.onItemsReady { setupPie(it) }
+    }
+
+    private fun setupPie(items: List<PieChartItem>) {
         val map = items.map { item ->
             PieEntry(item.value, item.label)
         }
@@ -70,7 +74,6 @@ internal class PieChartPluginView(
             invalidate()
         }
     }
-
 }
 
 internal interface StyleListener {
