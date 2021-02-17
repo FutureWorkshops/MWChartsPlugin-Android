@@ -2,13 +2,13 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
 buildscript {
-    val kotlin_version by extra("1.4.10")
+    val kotlin_version by extra("1.4.30")
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.1.0")
+        classpath("com.android.tools.build:gradle:4.1.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }

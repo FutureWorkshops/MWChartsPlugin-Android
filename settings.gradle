@@ -1,2 +1,3 @@
 include ':charts_plugin'
+
 rootProject.name = "Charts Plugin"
