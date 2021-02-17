@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
+    id("kotlin-parcelize")
     id("maven-publish")
     kotlin("android")
 }
@@ -88,7 +88,8 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
-    implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.16")
+    implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.17")
+
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
     implementation("com.github.matthewyork:ColoursLibrary:1.0.+@aar")
 

@@ -1,6 +1,5 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
-import android.util.Log
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.domain.service.ServiceContainer
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
@@ -28,7 +27,7 @@ sealed class ItemsProvider {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     { items -> provider(items) },
-                    { error -> Log.e("RESPONSE", "ERROR $error") })
+                    { error -> error.printStackTrace() })
         }
     }
 }

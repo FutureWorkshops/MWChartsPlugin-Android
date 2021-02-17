@@ -1,7 +1,10 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
+import android.util.Log
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
+import com.futureworkshops.mobileworkflow.model.App
+import com.futureworkshops.mobileworkflow.model.NavigationStyle
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
@@ -24,8 +27,8 @@ class UINetworkPieChartPluginStep(
         workflowServiceResponse: WorkflowServiceResponse,
         selectedWorkflowId: Int
     ): StepView {
-        // TODO: need to replace with workflowServiceResponse.server?.url
-        val fullUrl = "https://mw-expenses-dev1.herokuapp.com/${url}"
+        val fullUrl = "${workflowServiceResponse.server?.url}/${url}"
+
         // TODO: would be nice to replace with a call to URLIAsyncTask.build(url, method)
         val task = URLIAsyncTask<Unit, List<PieChartItem>>(
             fullUrl,
