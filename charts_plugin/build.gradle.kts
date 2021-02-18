@@ -1,9 +1,13 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-parcelize")
+    id("kotlin-android-extensions")
     id("maven-publish")
     kotlin("android")
+}
+
+androidExtensions {
+    isExperimental = true
 }
 
 android {
@@ -28,8 +32,12 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             isDebuggable = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -88,8 +96,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
-    implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.17")
-
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
     implementation("com.github.matthewyork:ColoursLibrary:1.0.+@aar")
 
@@ -97,4 +103,5 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
 
+    implementation(project(":mw-core"))
 }
