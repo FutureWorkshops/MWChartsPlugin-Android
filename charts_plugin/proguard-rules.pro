@@ -37,3 +37,5 @@
 -keepclassmembers class **.R$* {
        public static <fields>;
 }
+
+-keep class * extends android.os.Parcelable { *; }
