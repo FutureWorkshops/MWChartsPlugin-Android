@@ -2,7 +2,7 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
 buildscript {
-    val kotlin_version by extra("1.4.30")
+    val kotlin_version by extra("1.3.72")
     repositories {
         google()
         jcenter()
@@ -18,6 +18,7 @@ allprojects {
         google()
         jcenter()
         maven { url = uri("https://jitpack.io") }
+
         maven {
             name = "Mobile Workflow"
             url = uri("https://raw.githubusercontent.com/FutureWorkshops/MobileWorkflowCore-Android-Distribution/main")
@@ -29,6 +30,7 @@ allprojects {
             }
             authentication {
                 create<HttpHeaderAuthentication>("header")
+
             }
         }
     }
