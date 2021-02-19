@@ -31,6 +31,11 @@ android {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 
     buildTypes {
+        getByName("debug") {
+            isMinifyEnabled = false
+            isDebuggable = true
+        }
+
         getByName("release") {
             isMinifyEnabled = true
             isDebuggable = false
@@ -103,5 +108,10 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
 
-    implementation(project(":mw-core"))
+    val fromMaven = project.property("project.mavenCore")?.toString()?.toBoolean() ?: false
+    if (findProject(":mw-core") == null || fromMaven) {
+        implementation("com.futureworkshops.mobileworkflow:mw-core:0.0.18")
+    } else {
+        implementation(project(":mw-core"))
+    }
 }

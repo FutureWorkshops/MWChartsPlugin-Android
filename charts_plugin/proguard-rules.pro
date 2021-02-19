@@ -30,4 +30,10 @@
   @com.google.gson.annotations.SerializedName <fields>;
 }
 -keep class com.futureworkshops.mobileworkflow.plugin.web.step.* { *; }
--keep class * extends android.os.Parcelable { *; }
+
+-keep class * extends com.futureworkshops.mobileworkflow.domain.PluginFactory { *; }
+-keep class * extends com.futureworkshops.mobileworkflow.domain.DeserializeStep { *; }
+
+-keepclassmembers class **.R$* {
+       public static <fields>;
+}
