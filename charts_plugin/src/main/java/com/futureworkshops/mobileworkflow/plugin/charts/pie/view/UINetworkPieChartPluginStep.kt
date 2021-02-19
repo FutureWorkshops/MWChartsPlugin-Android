@@ -2,6 +2,7 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
+import com.futureworkshops.mobileworkflow.data.webview.IViewFactory
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
@@ -43,7 +44,8 @@ class UINetworkPieChartPluginStep(
             itemsProvider = ItemsProvider.AsyncItemsProvider(
                 mobileWorkflowServices.serviceContainer,
                 task
-            )
+            ),
+            viewFactory = mobileWorkflowServices.viewFactory
         )
     }
 }

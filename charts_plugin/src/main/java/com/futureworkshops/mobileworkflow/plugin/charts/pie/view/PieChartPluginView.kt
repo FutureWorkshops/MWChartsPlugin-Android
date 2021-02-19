@@ -5,6 +5,7 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
 import android.graphics.Color
+import com.futureworkshops.mobileworkflow.data.webview.IViewFactory
 import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
@@ -23,8 +24,9 @@ internal class PieChartPluginView(
     isOptional: Boolean,
     title: String,
     nextButton: String,
-    val itemsProvider: ItemsProvider
-) : QuestionView(id, isOptional, title, null, nextButton),
+    val itemsProvider: ItemsProvider,
+    viewFactory: IViewFactory
+) : QuestionView(id, isOptional, title, null, nextButton, viewFactory),
     StyleListener {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart

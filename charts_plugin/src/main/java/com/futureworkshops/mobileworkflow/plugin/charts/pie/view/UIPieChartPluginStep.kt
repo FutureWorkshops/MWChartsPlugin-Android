@@ -33,7 +33,8 @@ internal class UIPieChartPluginStep(
             isOptional = isOptional,
             title = mobileWorkflowServices.localizationService.getTranslation(title),
             nextButton = mobileWorkflowServices.localizationService.getTranslation("Next"),
-            itemsProvider = ItemsProvider.SyncItemsProvider(items)
+            itemsProvider = ItemsProvider.SyncItemsProvider(items),
+            viewFactory = mobileWorkflowServices.viewFactory
         )
     }
 
