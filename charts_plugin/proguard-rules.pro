@@ -29,7 +29,7 @@
 -keepclassmembers,allowobfuscation class * {
   @com.google.gson.annotations.SerializedName <fields>;
 }
--keep class com.futureworkshops.mobileworkflow.plugin.web.step.* { *; }
+-keep class com.futureworkshops.mobileworkflow.plugin.charts.step.* { *; }
 
 -keep class * extends com.futureworkshops.mobileworkflow.domain.PluginFactory { *; }
 -keep class * extends com.futureworkshops.mobileworkflow.domain.DeserializeStep { *; }
