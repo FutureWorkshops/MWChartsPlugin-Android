@@ -2,7 +2,6 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
-import com.futureworkshops.mobileworkflow.data.webview.IViewFactory
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
@@ -23,7 +22,7 @@ class UINetworkPieChartPluginStep(
         stepResult: StepResult?,
         mobileWorkflowServices: MobileWorkflowServices,
         workflowServiceResponse: WorkflowServiceResponse,
-        selectedWorkflowId: Int
+        selectedWorkflowId: String
     ): StepView {
         val fullUrl = "${workflowServiceResponse.server?.url}/${url}"
 
