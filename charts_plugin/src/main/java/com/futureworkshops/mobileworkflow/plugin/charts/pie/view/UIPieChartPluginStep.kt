@@ -24,7 +24,7 @@ internal class UIPieChartPluginStep(
         stepResult: StepResult?,
         mobileWorkflowServices: MobileWorkflowServices,
         workflowServiceResponse: WorkflowServiceResponse,
-        selectedWorkflowId: Int
+        selectedWorkflowId: String
     ): StepView {
         items.forEach { mobileWorkflowServices.localizationService.getTranslation(it.label) }
 
