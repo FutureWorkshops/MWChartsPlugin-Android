@@ -5,7 +5,7 @@ import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.StepIdentifier
-import com.futureworkshops.mobileworkflow.backend.views.step.StepView
+import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.result.StepResult
 import com.futureworkshops.mobileworkflow.services.MobileWorkflowServices
 import com.futureworkshops.mobileworkflow.steps.Step
@@ -23,7 +23,7 @@ class UINetworkPieChartPluginStep(
         mobileWorkflowServices: MobileWorkflowServices,
         workflowServiceResponse: WorkflowServiceResponse,
         selectedWorkflowId: String
-    ): StepView {
+    ): FragmentStep {
         val fullUrl = "${workflowServiceResponse.server?.url}/${url}"
 
         // TODO: would be nice to replace with a call to URLIAsyncTask.build(url, method)
