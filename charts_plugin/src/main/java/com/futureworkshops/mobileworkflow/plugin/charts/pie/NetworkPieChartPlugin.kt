@@ -3,8 +3,8 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie
 import com.futureworkshops.mobileworkflow.domain.DeserializeStep
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.NetworkPieChartPluginStep
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.view.UINetworkPieChartPluginStep
-import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
-import com.futureworkshops.mobileworkflow.surveykit.steps.Step
+import com.futureworkshops.mobileworkflow.StepIdentifier
+import com.futureworkshops.mobileworkflow.steps.Step
 
 class NetworkPieChartPlugin : DeserializeStep<NetworkPieChartPluginStep>(
     type = "io.mobileworkflow.NetworkPieChart",
