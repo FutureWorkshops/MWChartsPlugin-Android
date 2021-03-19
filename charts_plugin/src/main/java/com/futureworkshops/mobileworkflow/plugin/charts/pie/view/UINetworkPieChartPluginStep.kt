@@ -4,11 +4,11 @@ import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
-import com.futureworkshops.mobileworkflow.surveykit.backend.views.step.StepView
-import com.futureworkshops.mobileworkflow.surveykit.result.StepResult
-import com.futureworkshops.mobileworkflow.surveykit.services.MobileWorkflowServices
-import com.futureworkshops.mobileworkflow.surveykit.steps.Step
+import com.futureworkshops.mobileworkflow.StepIdentifier
+import com.futureworkshops.mobileworkflow.backend.views.step.StepView
+import com.futureworkshops.mobileworkflow.result.StepResult
+import com.futureworkshops.mobileworkflow.services.MobileWorkflowServices
+import com.futureworkshops.mobileworkflow.steps.Step
 import com.google.gson.reflect.TypeToken
 
 class UINetworkPieChartPluginStep(

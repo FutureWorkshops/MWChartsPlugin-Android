@@ -8,10 +8,10 @@ import android.graphics.Color
 import com.futureworkshops.mobileworkflow.data.webview.IViewFactory
 import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
-import com.futureworkshops.mobileworkflow.surveykit.backend.views.step.QuestionView
-import com.futureworkshops.mobileworkflow.surveykit.result.QuestionResult
-import com.futureworkshops.mobileworkflow.surveykit.result.question_results.EmptyQuestionResult
+import com.futureworkshops.mobileworkflow.StepIdentifier
+import com.futureworkshops.mobileworkflow.backend.views.step.QuestionView
+import com.futureworkshops.mobileworkflow.result.QuestionResult
+import com.futureworkshops.mobileworkflow.result.question_results.EmptyQuestionResult
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
