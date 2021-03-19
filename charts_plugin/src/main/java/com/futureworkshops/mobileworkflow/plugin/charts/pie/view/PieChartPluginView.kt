@@ -9,7 +9,7 @@ import com.futureworkshops.mobileworkflow.data.webview.IViewFactory
 import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.StepIdentifier
-import com.futureworkshops.mobileworkflow.backend.views.step.QuestionView
+import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.result.QuestionResult
 import com.futureworkshops.mobileworkflow.result.question_results.EmptyQuestionResult
 import com.github.mikephil.charting.charts.PieChart
@@ -26,7 +26,7 @@ internal class PieChartPluginView(
     nextButton: String,
     val itemsProvider: ItemsProvider,
     viewFactory: IViewFactory
-) : QuestionView(id, isOptional, title, null, nextButton, viewFactory),
+) : FragmentStep(id, isOptional, title, null, nextButton, viewFactory),
     StyleListener {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
