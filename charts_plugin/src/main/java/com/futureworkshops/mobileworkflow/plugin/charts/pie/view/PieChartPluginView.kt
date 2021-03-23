@@ -10,8 +10,8 @@ import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.StepIdentifier
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
-import com.futureworkshops.mobileworkflow.result.QuestionResult
-import com.futureworkshops.mobileworkflow.result.question_results.EmptyQuestionResult
+import com.futureworkshops.mobileworkflow.result.FragmentStepResult
+import com.futureworkshops.mobileworkflow.result.step_results.EmptyStepResult
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
@@ -31,7 +31,7 @@ internal class PieChartPluginView(
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
 
-    override fun createResults(): QuestionResult = EmptyQuestionResult(id, startDate)
+    override fun createResults(): FragmentStepResult = EmptyStepResult(id, startDate)
 
     override fun isValidInput(): Boolean = true
 
