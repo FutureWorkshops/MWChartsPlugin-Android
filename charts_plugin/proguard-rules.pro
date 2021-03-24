@@ -40,7 +40,4 @@
 
 -keep class * extends android.os.Parcelable { *; }
 
--keep class com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration { *; }
--keepclassmembers class com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse {
-    public static ** Companion;
-}
+-keep class com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration { public *; }
