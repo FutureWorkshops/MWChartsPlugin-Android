@@ -1,11 +1,12 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
+import com.futureworkshops.mobileworkflow.StepIdentifier
+import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
+import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.futureworkshops.mobileworkflow.StepIdentifier
-import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.result.StepResult
 import com.futureworkshops.mobileworkflow.services.MobileWorkflowServices
 import com.futureworkshops.mobileworkflow.steps.Step
@@ -36,15 +37,17 @@ class UINetworkPieChartPluginStep(
         )
 
         return PieChartPluginView(
+            FragmentStepConfiguration(
             id = id,
             isOptional = isOptional,
             title = mobileWorkflowServices.localizationService.getTranslation(title),
-            nextButton = mobileWorkflowServices.localizationService.getTranslation("Next"),
+            text = null,
+            nextButtonText = mobileWorkflowServices.localizationService.getTranslation("Next"),
+            mobileWorkflowServices = mobileWorkflowServices),
             itemsProvider = ItemsProvider.AsyncItemsProvider(
                 mobileWorkflowServices.serviceContainer,
                 task
-            ),
-            viewFactory = mobileWorkflowServices.viewFactory
+            )
         )
     }
 }
