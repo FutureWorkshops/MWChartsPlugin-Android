@@ -5,13 +5,12 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
 import android.graphics.Color
-import com.futureworkshops.mobileworkflow.data.webview.IViewFactory
+import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
+import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
 import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.futureworkshops.mobileworkflow.surveykit.StepIdentifier
-import com.futureworkshops.mobileworkflow.surveykit.backend.views.step.QuestionView
-import com.futureworkshops.mobileworkflow.surveykit.result.QuestionResult
-import com.futureworkshops.mobileworkflow.surveykit.result.question_results.EmptyQuestionResult
+import com.futureworkshops.mobileworkflow.result.FragmentStepResult
+import com.futureworkshops.mobileworkflow.result.step_results.EmptyStepResult
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
@@ -20,18 +19,14 @@ import com.github.mikephil.charting.data.PieEntry
 import com.mattyork.colours.Colour
 
 internal class PieChartPluginView(
-    id: StepIdentifier,
-    isOptional: Boolean,
-    title: String,
-    nextButton: String,
-    val itemsProvider: ItemsProvider,
-    viewFactory: IViewFactory
-) : QuestionView(id, isOptional, title, null, nextButton, viewFactory),
+    fragmentStepConfiguration: FragmentStepConfiguration,
+    val itemsProvider: ItemsProvider
+) : FragmentStep(fragmentStepConfiguration),
     StyleListener {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
 
-    override fun createResults(): QuestionResult = EmptyQuestionResult(id, startDate)
+    override fun createResults(): FragmentStepResult = EmptyStepResult(id, startDate)
 
     override fun isValidInput(): Boolean = true
 
