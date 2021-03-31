@@ -7,10 +7,10 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 import android.graphics.Color
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
+import com.futureworkshops.mobileworkflow.model.result.EmptyAnswerResult
+import com.futureworkshops.mobileworkflow.model.result.FragmentStepResult
 import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.futureworkshops.mobileworkflow.result.FragmentStepResult
-import com.futureworkshops.mobileworkflow.result.step_results.EmptyStepResult
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.PieData
@@ -26,7 +26,12 @@ internal class PieChartPluginView(
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
 
-    override fun createResults(): FragmentStepResult = EmptyStepResult(id, startDate)
+    override fun createResults(): FragmentStepResult<EmptyAnswerResult> {
+        return FragmentStepResult(
+            identifier = id.id,
+            answer = EmptyAnswerResult()
+        )
+    }
 
     override fun isValidInput(): Boolean = true
 
