@@ -11,14 +11,14 @@ androidExtensions {
 }
 
 android {
-    compileSdkVersion(29)
-    buildToolsVersion("29.0.3")
+    compileSdkVersion(30)
+    buildToolsVersion("30.0.3")
 
     defaultConfig {
         versionCode = Integer.parseInt(project.property("project.buildnumber")?.toString())
         versionName = project.property("project.buildversion")?.toString()
         minSdkVersion(24)
-        targetSdkVersion(29)
+        targetSdkVersion(30)
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -102,7 +102,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
     implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
-    implementation("com.github.matthewyork:ColoursLibrary:1.0.+@aar")
+    implementation("com.github.matthewyork:ColoursLibrary:1.0.0@aar")
 
     implementation("io.reactivex.rxjava3:rxjava:3.0.4")
     implementation("io.reactivex.rxjava3:rxandroid:3.0.0")
@@ -110,7 +110,7 @@ dependencies {
 
     val fromMaven = project.property("project.mavenCore")?.toString()?.toBoolean() ?: false
     if (findProject(":mw-core") == null || fromMaven) {
-        val version = project.property("project.coreVersion")
+        val version = project.property("project.coreVersion") as? String
         implementation("com.futureworkshops.mobileworkflow:mw-core:$version")
     } else {
         implementation(project(":mw-core"))
