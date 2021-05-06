@@ -26,7 +26,8 @@ allprojects {
             name = "Mobile Workflow"
             url = uri("https://raw.githubusercontent.com/FutureWorkshops/MobileWorkflowCore-Android-Distribution/main")
             credentials(HttpHeaderCredentials::class) {
-                val token = (getProperty("project.githubPAT") as? String) ?: ""
+                val token = (getProperty("project.githubPAT") as? String)
+                    ?: System.getenv("GITHUB_PAT") ?: ""
                 name = "Authorization"
                 value = "token $token"
             }
