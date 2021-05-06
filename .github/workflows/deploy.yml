@@ -1,4 +1,4 @@
-name: Deploy Podspec
+name: Deploy Plugin
 
 on:
   push:
@@ -34,9 +34,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.FW_MWPODSPEC_DEPLOY_PAT }}
-          repository: FutureWorkshops/MobileWorkflowCore-Android-Distribution
-          path: MobileWorkflowCore-Android-Distribution
-          ref: feature/semantic_versioning
+          repository: ${{ secrets.FW_ANDROID_MW_DISTRIBUTION_REPO }}
+          path: ${{ secrets.FW_ANDROID_MW_DISTRIBUTION_NAME }}
       - name: Publish
         env:
           BUILD_NUMBER: ${{ github.run_number }}
@@ -50,15 +49,18 @@ jobs:
         env:
           PLUGIN: ${{ steps.plugin_info.outputs.name }}
           TAG_VERSION: ${{ steps.tag.outputs.name }}
+          DIST_PATH: ${{ secrets.FW_ANDROID_MW_DISTRIBUTION_NAME }}
         run: |
-          cd MobileWorkflowCore-Android-Distribution
+          cd "${DIST_PATH}"
           git config --local user.email "c-i@futureworkshops.com"
           git config --local user.name "Continuous Integration"
           git add .
           git commit -m "${PLUGIN} [${TAG_VERSION}]"
           cd ..
       - name: Push new version
+        env:
+          DIST_PATH: ${{ secrets.FW_ANDROID_MW_DISTRIBUTION_NAME }}
         run: |
-          cd MobileWorkflowCore-Android-Distribution
+          cd "${DIST_PATH}"
           git push origin
           cd ..
