@@ -1,0 +1,57 @@
+name: Deploy Podspec
+
+on:
+  push:
+    tags: '*.*.**'
+
+jobs:
+  publish:
+    environment: main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout plugin
+        uses: actions/checkout@v2
+        with:
+          path: main
+      - name: Extract Tag
+        id: tag
+        run: echo ::set-output name=name::${GITHUB_REF#refs/*/}
+      - name: Get Plugin name
+        id: plugin_info
+        run: |
+          INCLUDE_LINE="$(cat ./main/settings.gradle | grep -e 'include' | sed "s|':.*'||g")"
+          PLUGIN_LINE="$(cat ./main/settings.gradle | grep -e 'include' | sed "s|${INCLUDE_LINE}||g")"
+          PLUGIN_NAME="$(echo "${PLUGIN_LINE}" | sed "s|[':]||g")"
+          echo ::set-output name=name::${PLUGIN_NAME}
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.FW_MWPODSPEC_DEPLOY_PAT }}
+          repository: FutureWorkshops/MobileWorkflowCore-Android-Distribution
+          path: MobileWorkflowCore-Android-Distribution
+          ref: feature/semantic_versioning
+      - name: Publish
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+          BUILD_VERSION: ${{ steps.tag.outputs.name }}
+        run: |
+          ./main/gradlew \
+          clean \
+          publish -Pproject.buildversion="${BUILD_VERSION}" -Pproject.buildnumber="${BUILD_NUMBER}" \
+          --refresh-dependencies
+      - name: Commit new version
+        env:
+          PLUGIN: ${{ steps.plugin_info.outputs.name }}
+          TAG_VERSION: ${{ steps.tag.outputs.name }}
+        run: |
+          cd repo
+          git config --local user.email "c-i@futureworkshops.com"
+          git config --local user.name "Continuous Integration"
+          git add .
+          git commit -m "${PLUGIN} [${TAG_VERSION}]"
+          cd ..
+      - name: Push new version
+        run: |
+          cd repo
+          git push origin
+          cd ..
