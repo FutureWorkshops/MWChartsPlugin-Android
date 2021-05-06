@@ -51,7 +51,7 @@ jobs:
           PLUGIN: ${{ steps.plugin_info.outputs.name }}
           TAG_VERSION: ${{ steps.tag.outputs.name }}
         run: |
-          cd repo
+          cd MobileWorkflowCore-Android-Distribution
           git config --local user.email "c-i@futureworkshops.com"
           git config --local user.name "Continuous Integration"
           git add .
@@ -59,6 +59,6 @@ jobs:
           cd ..
       - name: Push new version
         run: |
-          cd repo
+          cd MobileWorkflowCore-Android-Distribution
           git push origin
           cd ..
