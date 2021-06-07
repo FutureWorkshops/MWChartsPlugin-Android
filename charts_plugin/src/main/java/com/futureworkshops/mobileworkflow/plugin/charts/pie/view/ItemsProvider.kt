@@ -18,10 +18,10 @@ sealed class ItemsProvider {
 
     class AsyncItemsProvider(
         private val serviceContainer: ServiceContainer,
-        private val task: URLIAsyncTask<Unit, List<PieChartItem>>
+        private val task: URLIAsyncTask<Nothing, List<PieChartItem>>
     ) : ItemsProvider() {
         override fun onItemsReady(provider: (List<PieChartItem>) -> Unit) {
-            serviceContainer.performSingle<URLIAsyncTask<Unit, List<PieChartItem>>, List<PieChartItem>>(
+            serviceContainer.performSingle<URLIAsyncTask<Nothing, List<PieChartItem>>, List<PieChartItem>>(
                 task
             ).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

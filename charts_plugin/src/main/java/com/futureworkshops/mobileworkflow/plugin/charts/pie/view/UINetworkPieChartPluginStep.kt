@@ -26,9 +26,8 @@ class UINetworkPieChartPluginStep(
         selectedWorkflowId: String
     ): FragmentStep {
         val fullUrl = "${workflowServiceResponse.server?.url}/${url}"
-
-        // TODO: would be nice to replace with a call to URLIAsyncTask.build(url, method)
-        val task = URLIAsyncTask<Unit, List<PieChartItem>>(
+        
+        val task = URLIAsyncTask<Nothing, List<PieChartItem>>(
             fullUrl,
             URLMethod.GET,
             null,
