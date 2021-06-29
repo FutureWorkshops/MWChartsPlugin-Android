@@ -11,15 +11,16 @@ import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.StepResult
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.services.MobileWorkflowServices
+import com.futureworkshops.mobileworkflow.steps.DataTitle
 import com.futureworkshops.mobileworkflow.steps.Step
 
-internal class UIPieChartPluginStep(
-    private val title: String,
+internal data class UIPieChartPluginStep(
+    override val title: String,
     override val uuid: String,
     override var isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier(),
     val items: List<PieChartItem>
-) : Step {
+) : Step, DataTitle {
 
     override fun createView(
         stepResult: StepResult?,
@@ -41,4 +42,5 @@ internal class UIPieChartPluginStep(
         )
     }
 
+    override fun copyWithNewTitle(title: String): Step = copy(title = title)
 }
