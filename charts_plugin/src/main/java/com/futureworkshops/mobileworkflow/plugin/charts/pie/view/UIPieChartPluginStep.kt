@@ -42,5 +42,5 @@ internal data class UIPieChartPluginStep(
         )
     }
 
-    override fun copyWithNewTitle(title: String): Step = copy(title = title)
+    override fun copyWithNewTitle(title: String): Step = this
 }
