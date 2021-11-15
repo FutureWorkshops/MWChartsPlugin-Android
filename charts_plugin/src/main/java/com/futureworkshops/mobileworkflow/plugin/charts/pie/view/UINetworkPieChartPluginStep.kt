@@ -9,17 +9,16 @@ import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.StepResult
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.services.MobileWorkflowServices
-import com.futureworkshops.mobileworkflow.steps.DataTitle
 import com.futureworkshops.mobileworkflow.steps.Step
 import com.google.gson.reflect.TypeToken
 
 data class UINetworkPieChartPluginStep(
-    override val title: String,
+    val title: String,
     override val uuid: String,
     override var isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier(),
     private val url: String
-) : Step, DataTitle {
+) : Step {
     override fun createView(
         stepResult: StepResult?,
         mobileWorkflowServices: MobileWorkflowServices,
@@ -50,6 +49,4 @@ data class UINetworkPieChartPluginStep(
             )
         )
     }
-
-    override fun copyWithNewTitle(title: String): Step = copy(title = title)
 }
