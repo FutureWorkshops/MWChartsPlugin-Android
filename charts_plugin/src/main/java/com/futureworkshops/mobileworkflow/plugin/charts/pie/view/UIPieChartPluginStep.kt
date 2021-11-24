@@ -4,7 +4,7 @@
 
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
-import com.futureworkshops.mobileworkflow.StepIdentifier
+
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
@@ -17,7 +17,7 @@ internal data class UIPieChartPluginStep(
     val title: String,
     override val uuid: String,
     override var isOptional: Boolean = false,
-    override val id: StepIdentifier = StepIdentifier(),
+    override val id: String,
     val items: List<PieChartItem>
 ) : Step {
 

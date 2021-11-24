@@ -1,6 +1,6 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
-import com.futureworkshops.mobileworkflow.StepIdentifier
+
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
@@ -16,7 +16,7 @@ data class UINetworkPieChartPluginStep(
     val title: String,
     override val uuid: String,
     override var isOptional: Boolean = false,
-    override val id: StepIdentifier = StepIdentifier(),
+    override val id: String,
     private val url: String
 ) : Step {
     override fun createView(
