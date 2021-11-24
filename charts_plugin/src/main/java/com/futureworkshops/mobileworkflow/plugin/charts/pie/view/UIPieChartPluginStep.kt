@@ -31,7 +31,6 @@ internal data class UIPieChartPluginStep(
 
         return PieChartPluginView(
             FragmentStepConfiguration(
-            id = id,
             isOptional = isOptional,
             title = mobileWorkflowServices.localizationService.getTranslation(title),
             text = null,
