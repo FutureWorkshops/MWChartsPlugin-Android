@@ -17,7 +17,7 @@ internal class PieChartPlugin : DeserializeStep<PieChartPluginStep>(
 
     override fun createUIStep(step: PieChartPluginStep): Step = UIPieChartPluginStep(
         title = step.title,
-        uuid = step.uuid,
+
         isOptional = step.optional,
         id = step.id,
         items = step.items

@@ -15,7 +15,7 @@ import com.futureworkshops.mobileworkflow.steps.Step
 
 internal data class UIPieChartPluginStep(
     val title: String,
-    override val uuid: String,
+
     override var isOptional: Boolean = false,
     override val id: String,
     val items: List<PieChartItem>
