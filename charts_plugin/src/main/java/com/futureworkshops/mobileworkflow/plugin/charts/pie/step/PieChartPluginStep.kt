@@ -10,9 +10,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PieChartPluginStep(
-
     override val title: String,
-
     override val type: String,
     val optional: Boolean,
     val items: List<PieChartItem>

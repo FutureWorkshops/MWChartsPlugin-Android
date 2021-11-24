@@ -14,7 +14,6 @@ import com.google.gson.reflect.TypeToken
 
 data class UINetworkPieChartPluginStep(
     val title: String,
-
     override var isOptional: Boolean = false,
     override val id: String,
     private val url: String

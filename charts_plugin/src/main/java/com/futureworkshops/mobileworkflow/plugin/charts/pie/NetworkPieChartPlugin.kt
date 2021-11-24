@@ -12,7 +12,6 @@ class NetworkPieChartPlugin : DeserializeStep<NetworkPieChartPluginStep>(
 ) {
     override fun createUIStep(step: NetworkPieChartPluginStep): Step = UINetworkPieChartPluginStep(
         title = step.title,
-
         isOptional = step.optional,
         id = step.id,
         url = step.url
