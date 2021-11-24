@@ -8,7 +8,7 @@ import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
 import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.AnswerResult
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
-import com.futureworkshops.mobileworkflow.services.MobileWorkflowServices
+import com.futureworkshops.mobileworkflow.services.ServiceBox
 import com.futureworkshops.mobileworkflow.steps.Step
 import com.google.gson.reflect.TypeToken
 
@@ -21,7 +21,7 @@ data class UINetworkPieChartPluginStep(
 ) : Step {
     override fun createView(
         stepResult: AnswerResult?,
-        mobileWorkflowServices: MobileWorkflowServices,
+        services: ServiceBox,
         workflowServiceResponse: WorkflowServiceResponse,
         selectedWorkflowId: String
     ): FragmentStep {
@@ -38,12 +38,12 @@ data class UINetworkPieChartPluginStep(
         return PieChartPluginView(
             FragmentStepConfiguration(
             isOptional = isOptional,
-            title = mobileWorkflowServices.localizationService.getTranslation(title),
+            title = services.localizationService.getTranslation(title),
             text = null,
-            nextButtonText = mobileWorkflowServices.localizationService.getTranslation("Next"),
-            mobileWorkflowServices = mobileWorkflowServices),
+            nextButtonText = services.localizationService.getTranslation("Next"),
+            services = services),
             itemsProvider = ItemsProvider.AsyncItemsProvider(
-                mobileWorkflowServices.serviceContainer,
+                services.serviceContainer,
                 task
             )
         )
