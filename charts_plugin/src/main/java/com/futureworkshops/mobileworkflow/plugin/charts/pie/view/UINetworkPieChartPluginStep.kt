@@ -14,7 +14,6 @@ import com.google.gson.reflect.TypeToken
 
 data class UINetworkPieChartPluginStep(
     val title: String,
-    override var isOptional: Boolean = false,
     override val id: String,
     private val url: String
 ) : Step {
@@ -36,8 +35,7 @@ data class UINetworkPieChartPluginStep(
 
         return PieChartPluginView(
             FragmentStepConfiguration(
-            isOptional = isOptional,
-            title = services.localizationService.getTranslation(title),
+                        title = services.localizationService.getTranslation(title),
             text = null,
             nextButtonText = services.localizationService.getTranslation("Next"),
             services = services),

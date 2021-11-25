@@ -15,7 +15,6 @@ import com.futureworkshops.mobileworkflow.steps.Step
 
 internal data class UIPieChartPluginStep(
     val title: String,
-    override var isOptional: Boolean = false,
     override val id: String,
     val items: List<PieChartItem>
 ) : Step {
@@ -30,8 +29,7 @@ internal data class UIPieChartPluginStep(
 
         return PieChartPluginView(
             FragmentStepConfiguration(
-            isOptional = isOptional,
-            title = services.localizationService.getTranslation(title),
+                        title = services.localizationService.getTranslation(title),
             text = null,
             nextButtonText = services.localizationService.getTranslation("Next"),
             services = services),
