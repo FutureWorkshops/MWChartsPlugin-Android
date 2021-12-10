@@ -20,8 +20,7 @@ data class UINetworkPieChartPluginStep(
     override fun createView(
         stepResult: AnswerResult?,
         services: ServiceBox,
-        workflowServiceResponse: WorkflowServiceResponse,
-        selectedWorkflowId: String
+        workflowServiceResponse: WorkflowServiceResponse
     ): FragmentStep {
         val fullUrl = "${workflowServiceResponse.server?.url}/${url}"
         

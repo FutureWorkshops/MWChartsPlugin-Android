@@ -22,8 +22,7 @@ internal data class UIPieChartPluginStep(
     override fun createView(
         stepResult: AnswerResult?,
         services: ServiceBox,
-        workflowServiceResponse: WorkflowServiceResponse,
-        selectedWorkflowId: String
+        workflowServiceResponse: WorkflowServiceResponse
     ): FragmentStep {
         items.forEach { services.localizationService.getTranslation(it.label) }
 
