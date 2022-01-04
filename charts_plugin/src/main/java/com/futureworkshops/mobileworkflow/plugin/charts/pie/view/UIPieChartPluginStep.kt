@@ -7,7 +7,7 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
 
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
-import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
+import com.futureworkshops.mobileworkflow.model.AppServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.AnswerResult
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.services.ServiceBox
@@ -22,7 +22,7 @@ internal data class UIPieChartPluginStep(
     override fun createView(
         stepResult: AnswerResult?,
         services: ServiceBox,
-        workflowServiceResponse: WorkflowServiceResponse
+        appServiceResponse: AppServiceResponse
     ): FragmentStep {
         items.forEach { services.localizationService.getTranslation(it.label) }
 

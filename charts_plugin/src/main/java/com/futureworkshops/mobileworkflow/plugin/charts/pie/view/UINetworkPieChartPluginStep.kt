@@ -5,7 +5,7 @@ import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
 import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
-import com.futureworkshops.mobileworkflow.model.WorkflowServiceResponse
+import com.futureworkshops.mobileworkflow.model.AppServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.AnswerResult
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.services.ServiceBox
@@ -20,9 +20,9 @@ data class UINetworkPieChartPluginStep(
     override fun createView(
         stepResult: AnswerResult?,
         services: ServiceBox,
-        workflowServiceResponse: WorkflowServiceResponse
+        appServiceResponse: AppServiceResponse
     ): FragmentStep {
-        val fullUrl = "${workflowServiceResponse.server?.url}/${url}"
+        val fullUrl = "${appServiceResponse.server?.url}/${url}"
         
         val task = URLIAsyncTask<Nothing, List<PieChartItem>>(
             fullUrl,
