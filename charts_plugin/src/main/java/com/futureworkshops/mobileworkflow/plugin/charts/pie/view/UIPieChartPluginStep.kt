@@ -11,6 +11,7 @@ import com.futureworkshops.mobileworkflow.model.AppServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.AnswerResult
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
 import com.futureworkshops.mobileworkflow.services.ServiceBox
+import com.futureworkshops.mobileworkflow.services.localization.LocalizationService.PredefinedText
 import com.futureworkshops.mobileworkflow.steps.Step
 
 internal data class UIPieChartPluginStep(
@@ -28,10 +29,11 @@ internal data class UIPieChartPluginStep(
 
         return PieChartPluginView(
             FragmentStepConfiguration(
-                        title = services.localizationService.getTranslation(title),
-            text = null,
-            nextButtonText = services.localizationService.getTranslation("Next"),
-            services = services),
+                title = services.localizationService.getTranslation(title),
+                text = null,
+                nextButtonText = services.localizationService.getTranslation(PredefinedText.NEXT),
+                services = services
+            ),
             itemsProvider = ItemsProvider.SyncItemsProvider(items)
         )
     }
