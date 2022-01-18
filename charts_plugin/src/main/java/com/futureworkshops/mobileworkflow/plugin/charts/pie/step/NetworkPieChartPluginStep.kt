@@ -9,11 +9,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class NetworkPieChartPluginStep(
-    override val id: String,
-    override val title: String,
-    override val links: List<StepLink>,
+    @SerializedName("id") override val id: String,
+    @SerializedName("title") override val title: String,
+    @SerializedName("links") override val links: List<StepLink>,
     @SerializedName("navigationItems") override val navigationItems: List<NavigationItem>,
-    override val type: String,
-    val optional: Boolean,
-    val url: String
+    @SerializedName("type") override val type: String,
+    @SerializedName("url") val url: String
 ) : PluginStep(), Parcelable

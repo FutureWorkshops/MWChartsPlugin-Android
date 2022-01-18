@@ -13,19 +13,19 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PieChartPluginStep(
-    override val id: String,
-    override val title: String,
-    override val links: List<StepLink>,
+    @SerializedName("id") override val id: String,
+    @SerializedName("title") override val title: String,
+    @SerializedName("links") override val links: List<StepLink>,
     @SerializedName("navigationItems") override val navigationItems: List<NavigationItem>,
-    override val type: String,
-    val optional: Boolean,
-    val items: List<PieChartItem>
+    @SerializedName("type") override val type: String,
+    @SerializedName("optional") val optional: Boolean,
+    @SerializedName("items") val items: List<PieChartItem>
 ) : PluginStep(), Parcelable
 
 @Parcelize
 data class PieChartItem(
-    val id: String,
-    val label: String,
-    val value: Float,
-    val listItemId: Int
+    @SerializedName("id") val id: String,
+    @SerializedName("label") val label: String,
+    @SerializedName("value") val value: Float,
+    @SerializedName("listItemId") val listItemId: Int
 ) : Parcelable
