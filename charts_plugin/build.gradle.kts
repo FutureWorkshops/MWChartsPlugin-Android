@@ -109,8 +109,8 @@ dependencies {
     val fromMaven = project.property("project.mavenCore")?.toString()?.toBoolean() ?: false
     if (findProject(":mw-core") == null || fromMaven) {
         val version = project.property("project.coreVersion") as? String
-        api("com.futureworkshops.mobileworkflow:mw-core:$version")
+        compileOnly("com.futureworkshops.mobileworkflow:mw-core:$version")
     } else {
-        api(project(":mw-core"))
+        compileOnly(project(":mw-core"))
     }
 }
