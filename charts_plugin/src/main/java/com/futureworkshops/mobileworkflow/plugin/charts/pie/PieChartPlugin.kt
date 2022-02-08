@@ -7,7 +7,7 @@ package com.futureworkshops.mobileworkflow.plugin.charts.pie
 import com.futureworkshops.mobileworkflow.domain.DeserializeStep
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartPluginStep
 import com.futureworkshops.mobileworkflow.plugin.charts.pie.view.UIPieChartPluginStep
-import com.futureworkshops.mobileworkflow.StepIdentifier
+
 import com.futureworkshops.mobileworkflow.steps.Step
 
 internal class PieChartPlugin : DeserializeStep<PieChartPluginStep>(
@@ -17,9 +17,7 @@ internal class PieChartPlugin : DeserializeStep<PieChartPluginStep>(
 
     override fun createUIStep(step: PieChartPluginStep): Step = UIPieChartPluginStep(
         title = step.title,
-        uuid = step.uuid,
-        isOptional = step.optional,
-        id = StepIdentifier(step.identifier),
+        id = step.id,
         items = step.items
     )
 

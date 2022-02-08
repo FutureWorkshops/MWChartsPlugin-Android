@@ -5,23 +5,27 @@
 package com.futureworkshops.mobileworkflow.plugin.charts.pie.step
 
 import android.os.Parcelable
+import com.futureworkshops.mobileworkflow.model.configuration.NavigationItem
+import com.futureworkshops.mobileworkflow.model.configuration.StepLink
 import com.futureworkshops.mobileworkflow.model.step.PluginStep
+import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class PieChartPluginStep(
-    override val identifier: String,
-    override val title: String,
-    override val uuid: String,
-    override val type: String,
-    val optional: Boolean,
-    val items: List<PieChartItem>
+    @SerializedName("id") override val id: String,
+    @SerializedName("title") override val title: String,
+    @SerializedName("links") override val links: List<StepLink>,
+    @SerializedName("navigationItems") override val navigationItems: List<NavigationItem>,
+    @SerializedName("type") override val type: String,
+    @SerializedName("optional") val optional: Boolean,
+    @SerializedName("items") val items: List<PieChartItem>
 ) : PluginStep(), Parcelable
 
 @Parcelize
 data class PieChartItem(
-    val id: String,
-    val label: String,
-    val value: Float,
-    val listItemId: Int
+    @SerializedName("id") val id: String,
+    @SerializedName("label") val label: String,
+    @SerializedName("value") val value: Float,
+    @SerializedName("listItemId") val listItemId: Int
 ) : Parcelable

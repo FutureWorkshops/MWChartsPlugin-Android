@@ -20,25 +20,26 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -repackageclasses com.futureworkshops.mobileworkflow.plugin.charts
--keep class * extends com.futureworkshops.mobileworkflow.model.step.Step { *; }
--keep class * extends com.futureworkshops.mobileworkflow.model.step.PluginStep { *; }
--keep class * extends com.futureworkshops.mobileworkflow.model.result.StepResult { *; }
--keep class * extends com.futureworkshops.mobileworkflow.model.result.FragmentStepResult { *; }
--keep class * extends com.futureworkshops.mobileworkflow.model.result.AnswerResult { *; }
+-keep class * extends com.futureworkshops.mobileworkflow.model.step.Step { public *;  protected *; }
+-keep class * extends com.futureworkshops.mobileworkflow.model.step.PluginStep { public *;  protected *; }
 
+
+-keep class * extends com.futureworkshops.mobileworkflow.model.result.AnswerResult { public *;  protected *; }
+
+-keep class * extends com.futureworkshops.mobileworkflow.model.step.PluginStep { public *; protected *; }
 # Prevent R8 from leaving Data object members always null
 -keepclassmembers,allowobfuscation class * {
   @com.google.gson.annotations.SerializedName <fields>;
 }
--keep class com.futureworkshops.mobileworkflow.plugin.charts.step.* { *; }
+-keep class com.futureworkshops.mobileworkflow.plugin.charts.step.* { public *;  protected *; }
 
--keep class * extends com.futureworkshops.mobileworkflow.domain.PluginFactory { *; }
--keep class * extends com.futureworkshops.mobileworkflow.domain.DeserializeStep { *; }
+-keep class * extends com.futureworkshops.mobileworkflow.domain.PluginFactory { public *;  protected *; }
+-keep class * extends com.futureworkshops.mobileworkflow.domain.DeserializeStep { public *;  protected *; }
 
 -keepclassmembers class **.R$* {
        public static <fields>;
 }
 
--keep class * extends android.os.Parcelable { *; }
+-keep class * extends android.os.Parcelable { public *;  protected *; }
 
--keep class com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration { public *; }
+-keep class com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration { public *;  protected *; }

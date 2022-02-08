@@ -8,9 +8,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
-import com.futureworkshops.mobileworkflow.plugin.charts.R
 import com.futureworkshops.mobileworkflow.SurveyTheme
 import com.futureworkshops.mobileworkflow.backend.views.main_parts.StyleablePart
+import com.futureworkshops.mobileworkflow.plugin.charts.R
 
 internal class PieChartPluginPart @JvmOverloads constructor(
     context: Context,
