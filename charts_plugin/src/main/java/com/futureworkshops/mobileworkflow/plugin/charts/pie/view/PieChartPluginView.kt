@@ -21,8 +21,7 @@ import com.mattyork.colours.Colour
 internal class PieChartPluginView(
     fragmentStepConfiguration: FragmentStepConfiguration,
     val itemsProvider: ItemsProvider
-) : FragmentStep(fragmentStepConfiguration),
-    StyleListener {
+) : FragmentStep(fragmentStepConfiguration) {
 
     private lateinit var pieChartPluginPart: PieChartPluginPart
 
@@ -33,13 +32,9 @@ internal class PieChartPluginView(
     override fun setupViews() {
         super.setupViews()
         context?.let { safeContext ->
-            pieChartPluginPart = PieChartPluginPart(safeContext, this)
+            pieChartPluginPart = PieChartPluginPart(safeContext)
             content.add(pieChartPluginPart)
         }
-    }
-
-    override fun onTintColorReady(color: Int) {
-        itemsProvider.onItemsReady { setupPie(it) }
     }
 
     private fun setupPie(items: List<PieChartItem>) {
@@ -71,10 +66,4 @@ internal class PieChartPluginView(
             invalidate()
         }
     }
-}
-
-internal interface StyleListener {
-
-    fun onTintColorReady(color: Int)
-
 }
