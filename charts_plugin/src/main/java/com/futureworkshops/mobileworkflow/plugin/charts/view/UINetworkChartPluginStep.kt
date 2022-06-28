@@ -47,7 +47,8 @@ data class UINetworkChartPluginStep(
             ),
             itemsProvider = ItemProvider.AsyncItemsProvider(
                 services.serviceContainer,
-                task
+                task,
+                services.localizationService
             ),
             numberOfColumns = numberOfColumns
         )

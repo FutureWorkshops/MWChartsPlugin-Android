@@ -9,6 +9,7 @@ import com.futureworkshops.mobileworkflow.domain.service.ServiceContainer
 import com.futureworkshops.mobileworkflow.plugin.charts.step.DashboardBaseChartItem
 import com.futureworkshops.mobileworkflow.plugin.charts.step.DashboardChartItem
 import com.futureworkshops.mobileworkflow.plugin.charts.step.DashboardNetworkChartItem
+import com.futureworkshops.mobileworkflow.services.localization.LocalizationService
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -22,7 +23,10 @@ sealed class ItemProvider {
 
     open fun retry() {}
 
-    class SyncItemsProvider(private val items: List<DashboardChartItem>) : ItemProvider() {
+    class SyncItemsProvider(
+        private val items: List<DashboardChartItem>,
+        private val localizationService: LocalizationService
+    ) : ItemProvider() {
         override fun onItemsReady(
             provider: (List<DashboardBaseChartItem>) -> Unit,
             onLoading: () -> Unit,
@@ -33,9 +37,9 @@ sealed class ItemProvider {
                     id = it.id,
                     listItemId = it.listItemId,
                     chartType = it.chartType,
-                    title = it.title,
-                    subtitle = it.subtitle,
-                    footer = it.footer,
+                    title = localizationService.getTranslation(it.title),
+                    subtitle = localizationService.getTranslationOrNull(it.subtitle),
+                    footer = localizationService.getTranslationOrNull(it.footer),
                     values = it.statisticText?.let(::listOf) ?: it.chartValues?.split(",")
                     ?: emptyList(),
                     colors = it.chartColors?.split(","),
@@ -48,7 +52,8 @@ sealed class ItemProvider {
 
     class AsyncItemsProvider(
         private val serviceContainer: ServiceContainer,
-        private val task: URLIAsyncTask<Nothing, List<DashboardNetworkChartItem>>
+        private val task: URLIAsyncTask<Nothing, List<DashboardNetworkChartItem>>,
+        private val localizationService: LocalizationService
     ) : ItemProvider() {
         private lateinit var success: (List<DashboardBaseChartItem>) -> Unit
         private lateinit var loading: () -> Unit
@@ -81,9 +86,9 @@ sealed class ItemProvider {
                             id = it.id,
                             listItemId = it.id,
                             chartType = it.chartType,
-                            title = it.title,
-                            subtitle = it.subtitle,
-                            footer = it.footer,
+                            title = localizationService.getTranslation(it.title),
+                            subtitle = localizationService.getTranslationOrNull(it.subtitle),
+                            footer = localizationService.getTranslationOrNull(it.footer),
                             values = it.statisticText?.let(::listOf) ?: it.chartValues
                             ?: emptyList(),
                             colors = it.chartColors,

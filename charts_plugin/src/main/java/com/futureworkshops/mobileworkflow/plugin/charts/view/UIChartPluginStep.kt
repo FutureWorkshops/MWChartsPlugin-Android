@@ -33,7 +33,7 @@ internal data class UIChartPluginStep(
                 nextButtonText = services.localizationService.getTranslation(LocalizationService.PredefinedText.NEXT),
                 services = services
             ),
-            itemsProvider = ItemProvider.SyncItemsProvider(items),
+            itemsProvider = ItemProvider.SyncItemsProvider(items, services.localizationService),
             numberOfColumns = numberOfColumns
         )
     }
