@@ -28,10 +28,14 @@ data class UINetworkChartPluginStep(
         services: ServiceBox,
         appServiceResponse: AppServiceResponse
     ): FragmentStep {
-        val fullUrl = "${appServiceResponse.server?.url}${url}"
+        val resolvedURL = services.urlTaskBuilder.urlHelper.resolveUrl(
+            appServiceResponse.server,
+            url,
+            appServiceResponse.session
+        )
 
         val task = URLIAsyncTask<Nothing, List<DashboardNetworkChartItem>>(
-            fullUrl,
+            resolvedURL ?: url,
             URLMethod.GET,
             null,
             emptyMap(),
