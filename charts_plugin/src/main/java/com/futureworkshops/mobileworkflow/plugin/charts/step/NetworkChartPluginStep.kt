@@ -1,4 +1,4 @@
-package com.futureworkshops.mobileworkflow.plugin.charts.pie.step
+package com.futureworkshops.mobileworkflow.plugin.charts.step
 
 import android.os.Parcelable
 import com.futureworkshops.mobileworkflow.model.configuration.NavigationItem
@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class NetworkPieChartPluginStep(
+class NetworkChartPluginStep(
     @SerializedName("id") override val id: String,
     @SerializedName("title") override val title: String,
     @SerializedName("links") override val links: List<StepLink>,

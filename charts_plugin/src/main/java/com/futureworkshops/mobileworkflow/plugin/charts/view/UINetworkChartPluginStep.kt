@@ -1,5 +1,8 @@
-package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
+/*
+ * Copyright (c) 2022 FutureWorkshops. All rights reserved.
+ */
 
+package com.futureworkshops.mobileworkflow.plugin.charts.view
 
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
@@ -7,43 +10,52 @@ import com.futureworkshops.mobileworkflow.data.network.task.URLIAsyncTask
 import com.futureworkshops.mobileworkflow.data.network.task.URLMethod
 import com.futureworkshops.mobileworkflow.model.AppServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.AnswerResult
-import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
+import com.futureworkshops.mobileworkflow.plugin.charts.step.DashboardNetworkChartItem
 import com.futureworkshops.mobileworkflow.services.ServiceBox
-import com.futureworkshops.mobileworkflow.services.localization.LocalizationService.PredefinedText
+import com.futureworkshops.mobileworkflow.services.localization.LocalizationService
 import com.futureworkshops.mobileworkflow.steps.Step
 import com.google.gson.reflect.TypeToken
 
-data class UINetworkPieChartPluginStep(
-    val title: String,
+data class UINetworkChartPluginStep(
     override val id: String,
-    private val url: String
-) : Step {
+    val title: String,
+    val numberOfColumns: Int,
+    val url: String
+): Step {
+
     override fun createView(
         stepResult: AnswerResult?,
         services: ServiceBox,
         appServiceResponse: AppServiceResponse
     ): FragmentStep {
-        val fullUrl = "${appServiceResponse.server?.url}/${url}"
-        
-        val task = URLIAsyncTask<Nothing, List<PieChartItem>>(
-            fullUrl,
+        val resolvedURL = services.urlTaskBuilder.urlHelper.resolveUrl(
+            appServiceResponse.server,
+            url,
+            appServiceResponse.session
+        )
+
+        val task = URLIAsyncTask<Nothing, List<DashboardNetworkChartItem>>(
+            resolvedURL ?: url,
             URLMethod.GET,
             null,
             emptyMap(),
-            object : TypeToken<List<PieChartItem>>() {}.type
+            object : TypeToken<List<DashboardNetworkChartItem>>() {}.type
         )
 
-        return PieChartPluginView(
+        return ChartPluginView(
             FragmentStepConfiguration(
                 title = services.localizationService.getTranslation(title),
                 text = null,
-                nextButtonText = services.localizationService.getTranslation(PredefinedText.NEXT),
+                nextButtonText = services.localizationService.getTranslation(LocalizationService.PredefinedText.NEXT),
                 services = services
             ),
-            itemsProvider = ItemsProvider.AsyncItemsProvider(
+            itemsProvider = ItemProvider.AsyncItemsProvider(
                 services.serviceContainer,
-                task
-            )
+                task,
+                services.localizationService
+            ),
+            numberOfColumns = numberOfColumns
         )
     }
+
 }

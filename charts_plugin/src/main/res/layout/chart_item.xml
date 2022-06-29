@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022 FutureWorkshops. All rights reserved.
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/subtitle_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="Subtitle"
+            tools:visibility="visible" />
+
+        <FrameLayout
+            android:id="@+id/chart_container"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:id="@+id/footer_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:text="Footer"
+            tools:visibility="visible" />
+    </LinearLayout>
+    <View
+        android:id="@+id/touch_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</androidx.cardview.widget.CardView>

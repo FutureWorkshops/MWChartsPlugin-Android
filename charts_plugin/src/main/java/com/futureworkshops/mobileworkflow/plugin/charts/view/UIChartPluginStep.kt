@@ -1,23 +1,23 @@
 /*
- * Copyright (c) 2020 FutureWorkshops. All rights reserved.
+ * Copyright (c) 2022 FutureWorkshops. All rights reserved.
  */
 
-package com.futureworkshops.mobileworkflow.plugin.charts.pie.view
-
+package com.futureworkshops.mobileworkflow.plugin.charts.view
 
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStepConfiguration
 import com.futureworkshops.mobileworkflow.model.AppServiceResponse
 import com.futureworkshops.mobileworkflow.model.result.AnswerResult
-import com.futureworkshops.mobileworkflow.plugin.charts.pie.step.PieChartItem
+import com.futureworkshops.mobileworkflow.plugin.charts.step.DashboardChartItem
 import com.futureworkshops.mobileworkflow.services.ServiceBox
-import com.futureworkshops.mobileworkflow.services.localization.LocalizationService.PredefinedText
+import com.futureworkshops.mobileworkflow.services.localization.LocalizationService
 import com.futureworkshops.mobileworkflow.steps.Step
 
-internal data class UIPieChartPluginStep(
-    val title: String,
+internal data class UIChartPluginStep(
     override val id: String,
-    val items: List<PieChartItem>
+    val title: String,
+    val items: List<DashboardChartItem>,
+    val numberOfColumns: Int
 ) : Step {
 
     override fun createView(
@@ -25,16 +25,16 @@ internal data class UIPieChartPluginStep(
         services: ServiceBox,
         appServiceResponse: AppServiceResponse
     ): FragmentStep {
-        items.forEach { services.localizationService.getTranslation(it.label) }
 
-        return PieChartPluginView(
+        return ChartPluginView(
             FragmentStepConfiguration(
                 title = services.localizationService.getTranslation(title),
                 text = null,
-                nextButtonText = services.localizationService.getTranslation(PredefinedText.NEXT),
+                nextButtonText = services.localizationService.getTranslation(LocalizationService.PredefinedText.NEXT),
                 services = services
             ),
-            itemsProvider = ItemsProvider.SyncItemsProvider(items)
+            itemsProvider = ItemProvider.SyncItemsProvider(items, services.localizationService),
+            numberOfColumns = numberOfColumns
         )
     }
 }
