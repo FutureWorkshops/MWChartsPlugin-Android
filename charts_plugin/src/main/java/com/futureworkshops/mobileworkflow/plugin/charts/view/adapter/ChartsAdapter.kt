@@ -94,6 +94,12 @@ internal class ChartsAdapter(
                     visibility = View.VISIBLE
                 }
             }
+            item.text?.let { text ->
+                binding.textTv.apply {
+                    this.text = text
+                    visibility = View.VISIBLE
+                }
+            }
             item.footer?.let { footer ->
                 binding.footerTv.apply {
                     text = footer
@@ -118,10 +124,16 @@ internal class ChartsAdapter(
         private val binding: StatisticItemBinding
     ) : ChartItemViewHolder(binding.root) {
         override fun bind(item: DashboardBaseChartItem) {
-            binding.titleTv.text = item.title
-            binding.valueTxv.text = item.values.first()
-            binding.container.setOnClickListener {
-                onItemClick(item)
+            with(binding) {
+                titleTv.text = item.title
+                valueTxv.text = item.text
+                item.footer?.let { footer ->
+                    footerTv.text = footer
+                    footerTv.visibility = View.VISIBLE
+                }
+                container.setOnClickListener {
+                    onItemClick(item)
+                }
             }
         }
     }
