@@ -87,7 +87,7 @@ sealed class ItemProvider {
                             listItemId = it.id,
                             chartType = it.chartType,
                             title = localizationService.getTranslation(it.title),
-                            text = it.text,
+                            text = it.text?.let(localizationService::getTranslation),
                             subtitle = localizationService.getTranslationOrNull(it.subtitle),
                             footer = localizationService.getTranslationOrNull(it.footer),
                             values = it.chartValues
