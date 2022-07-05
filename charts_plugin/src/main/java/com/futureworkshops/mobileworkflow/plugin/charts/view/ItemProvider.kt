@@ -38,10 +38,10 @@ sealed class ItemProvider {
                     listItemId = it.listItemId,
                     chartType = it.chartType,
                     title = localizationService.getTranslation(it.title),
+                    text = it.text?.let(localizationService::getTranslation),
                     subtitle = localizationService.getTranslationOrNull(it.subtitle),
                     footer = localizationService.getTranslationOrNull(it.footer),
-                    values = it.statisticText?.let(::listOf) ?: it.chartValues?.split(",")
-                    ?: emptyList(),
+                    values = it.chartValues?.split(",") ?: emptyList(),
                     colors = it.chartColors?.split(","),
                     colorsDark = it.chartColorsDark?.split(",")
                 )
@@ -87,9 +87,10 @@ sealed class ItemProvider {
                             listItemId = it.id,
                             chartType = it.chartType,
                             title = localizationService.getTranslation(it.title),
+                            text = it.text?.let(localizationService::getTranslation),
                             subtitle = localizationService.getTranslationOrNull(it.subtitle),
                             footer = localizationService.getTranslationOrNull(it.footer),
-                            values = it.statisticText?.let(::listOf) ?: it.chartValues
+                            values = it.chartValues
                             ?: emptyList(),
                             colors = it.chartColors,
                             colorsDark = it.chartColorsDark

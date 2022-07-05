@@ -29,6 +29,14 @@
             tools:text="Subtitle"
             tools:visibility="visible" />
 
+        <TextView
+            android:id="@+id/text_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/step_info_title_text_size"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <FrameLayout
             android:id="@+id/chart_container"
             android:layout_width="match_parent"
@@ -42,6 +50,7 @@
             tools:text="Footer"
             tools:visibility="visible" />
     </LinearLayout>
+
     <View
         android:id="@+id/touch_overlay"
         android:layout_width="match_parent"
