@@ -41,9 +41,9 @@ sealed class ItemProvider {
                     text = it.text?.let(localizationService::getTranslation),
                     subtitle = localizationService.getTranslationOrNull(it.subtitle),
                     footer = localizationService.getTranslationOrNull(it.footer),
-                    values = it.chartValues?.split(",") ?: emptyList(),
-                    colors = it.chartColors?.split(","),
-                    colorsDark = it.chartColorsDark?.split(",")
+                    values = it.chartValues?.split(",")?.map(String::trim) ?: emptyList(),
+                    colors = it.chartColors?.split(",")?.map(String::trim),
+                    colorsDark = it.chartColorsDark?.split(",")?.map(String::trim)
                 )
             }
             provider(formalisedItems)

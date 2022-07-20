@@ -4,6 +4,7 @@
 
 package com.futureworkshops.mobileworkflow.plugin.charts.view
 
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.futureworkshops.mobileworkflow.backend.views.step.FragmentStep
@@ -43,6 +44,7 @@ class ChartPluginView(
     override fun setupViews() {
         super.setupViews()
         content.makeContainerMatchParent()
+        footer.visibility = View.GONE
         loadStack()
     }
 
