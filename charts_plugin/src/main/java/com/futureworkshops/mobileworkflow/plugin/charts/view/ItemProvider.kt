@@ -98,13 +98,13 @@ sealed class ItemProvider {
                     }
                 }
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { success(it) },
-                    { error ->
-                        error()
-                        error.printStackTrace()
-                    }
-                )
+                .doOnSuccess { success(it) }
+                .doOnError { error ->
+                    error()
+                    error.printStackTrace()
+                }
+                .subscribe()
+
         }
     }
 }
